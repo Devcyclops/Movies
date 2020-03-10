@@ -9,7 +9,9 @@ import sys
 
 app = Flask(__name__)
 
-
+def clean_list(list):
+    for n in list:
+        n.strip("\n")
 @app.route('/search/', methods=['GET', 'POST'])
 def search():
     session = requests.Session()
@@ -48,14 +50,20 @@ def search():
     soup = bs(get_url.text, 'html.parser')
     div = soup.find('div',{'id':'Blog1'})
     div_2 = div.find('div', {'class':'post-body'})
+    image = div_2.find('a')['href']
     a_href = div_2.find_all('a')
+    description = div_2.text
+    trim = description.index('CLICK')
+    trimmed_description = description[:trim]
+    trimmed_description_list = trimmed_description.split('\n')
     download_links = []
     del a_href[0]
     for dl in a_href:
         link = dl['href']
         download_links.append(link)
         download_header = "Click the links to download any quality of your choice"
-    return render_template('home.html', title='home', download_header=download_header, download_links=download_links)
+    
+    return render_template('home.html', title='home', trimmed_description_list=trimmed_description_list, image=image, download_header=download_header, download_links=download_links)
 
 @app.route('/')
 def home():

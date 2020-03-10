@@ -14,14 +14,22 @@
   <body>
 
    {% block content %}
-    <div class="text-center container mx-auto">
-    
+   
+    <div class="container text-center d-flex justify-content-center">
+  
+        <a href="{{image}}"><img src="{{image}}" height="400px" width="400px"></a>
+        <div class="container">
+                {% for word in trimmed_description_list %}
+                {{word}}<br>
+                {% endfor %}
+        </div>
     </div>
+    
     <div class="container">
-        <h3>{{download_header}}</h3><br>
+        <h3>{{download_header}}</h3><hr>
         {% for download_link in download_links %}
         
-        <a href="{{download_link}}" >{{download_link}}</a><br><br>
+        <a href="{{download_link}}" >{{download_link}}</a><br>
         {% endfor %}
     </div>
     {% endblock %}
