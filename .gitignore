@@ -5,8 +5,10 @@
 
 # C extensions
 *.so
+#h files 
 .h
-
+#tcl files
+.tcl
 # Distribution / packaging
 .Python
 build/
