@@ -1,4 +1,3 @@
-{% extends 'base.html' %}
 <!doctype html>
 <html lang="en">
   <head>
@@ -9,22 +8,25 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
-    <title>Hello, world!</title>
+    <title>Download Movies</title>
   </head>
   <body>
+        <nav class="navbar navbar-light bg-light justify-content-between">
+            <a class="navbar-brand"><b>GenMovies</b></a>
+            <form class="form-inline" action="{{url_for('search')}}">
 
-   {% block content %}
-    <div class="text-center container mx-auto">
-    
-    </div>
-    <div class="container">
-        <h3>{{download_header}}</h3><br>
-        {% for download_link in download_links %}
-        
-        <a href="{{download_link}}" >{{download_link}}</a><br><br>
-        {% endfor %}
-    </div>
-    {% endblock %}
+                    <div class="form-group mx-sm-3 mb-2">
+                        <label for="Movie" class="sr-only">Movie</label>
+                        <input type="text" class="form-control mr-sm-2" id="movie" name="movie" placeholder="Movie">
+                    </div>
+                    <button type="submit" class="btn btn-outline-primary my-2 my-sm-0">find movie</button>
+                    </form>
+            </nav>
+              <div class="container pt-4 d-flex justify-content-center">
+
+                {% block content %}
+                {% endblock %}
+              </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
