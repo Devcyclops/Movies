@@ -2,8 +2,9 @@
 /__pycache__/
 *.py[cod]
 *$py.class
-/include/
-/scripts/
+/Include/*
+/Scripts/*
+/tcl/*
 # C extensions
 *.so
 #h files 
